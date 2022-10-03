@@ -6,7 +6,7 @@ UTIL_PATH = os.path.join( ROOT_DIR, 'utils' )
 sys.path.append(UTIL_PATH)
 
 import code
-from const import letter_dict
+from const import letter_dict, number_dict
 
 import math
 
