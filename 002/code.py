@@ -64,8 +64,12 @@ def calc_minimum(arr):
     smaller = lambda a, b: a if a < b else b
     return( reduce( smaller, arr ) )
 
+def calc_maximum(arr):
+    bigger = lambda a, b: a if a > b else b
+    return( reduce( bigger, arr ) )
+
 def simple_sort( arr ):
-    ret_arr, unsorted = [], arr
+    ret_arr, unsorted = [], arr.copy()
     while len( ret_arr ) < len( arr ):
         smallest = calc_minimum(  unsorted )
         index = unsorted.index( smallest )
@@ -73,8 +77,39 @@ def simple_sort( arr ):
         ret_arr.append(smallest)
     return ret_arr
 
+def swap_sort(arr):
+    num_swaps = 1
+    while num_swaps > 0:
+        num_swaps = 0
+        for i in range( len(arr) - 1 ):
+            if arr[i] > arr[ i+1 ]:
+                num_swaps += 1
+                arr[i], arr[ i+1 ] = arr[ i+1 ], arr[i]
+    return arr
 
+def tally_sort( arr ):
+    minimum = calc_minimum(arr)
+    maximum = calc_maximum(arr) - minimum
 
+    adj_arr = [ i - minimum for i in arr ]
+    tallies = [0] * (maximum + 1)
 
+    for elt in adj_arr:
+        tallies[elt] += 1
 
+    ret_arr = []
+    for i in range( len(tallies) ):
+        for _ in range( tallies[i]):
+            ret_arr.append(i)
 
+    ret_arr = [ i + minimum for i in ret_arr ]
+    return ret_arr    
+
+def card_sort(arr):
+    sorted, unsorted = [], arr.copy()
+    while len(sorted) < len(arr):
+        elt, elt_index = unsorted.pop(), 0
+        while len(sorted) >= elt_index + 1 and elt > sorted[elt_index]:
+            elt_index += 1
+        sorted = sorted[ :elt_index ] + [ elt ] + sorted[ elt_index : ]
+    return sorted

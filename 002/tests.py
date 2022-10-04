@@ -12,7 +12,11 @@ test_values = [
     (code.encode_string,  [5, 3, 9, 5, 43], ('a cat', 2, 3 ) ), 
     (code.decode_numbers,  'a cat', ([5, 3, 9, 5, 43], 2, 3) ),
     ( code.calc_minimum, 1, ( [4, 5, 1, 2], ) ), 
-    ( code.simple_sort, [ 1, 2, 4, 5 ],  ( [4, 5, 1, 2], ) ) 
+    ( code.simple_sort, [ 1, 2, 4, 5 ],  ( [4, 5, 1, 2], ) ) ,
+    ( code.swap_sort, [ 1, 2, 4, 5 ],  ( [4, 5, 1, 2], ) ) ,
+    ( code.tally_sort, [ 1, 2, 2, 2, 2, 4, 5, 5 ],  ( [4, 2, 2, 5, 2, 5, 1, 2], ) ) ,
+    ( code.tally_sort, [ 1, 2, 4, 5 ],  ( [4, 5, 1, 2], ) ) ,
+    ( code.card_sort, [ 1, 2, 4, 5 ],  ( [4, 5, 1, 2], ) ) ,
 ]
 
 print()
@@ -35,4 +39,7 @@ for a in range(1, 100):
 print( code.root_2_binary_search() )
 print( code.calc_square_root( 2, 10 ** -5 ) )
 print( code.calc_nth_root( 2, 2, 10 ** -5 ) )
+
+
+
 
