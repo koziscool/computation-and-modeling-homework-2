@@ -28,3 +28,8 @@ for a in range(1, 100):
         decoded_message =code. decode_numbers( message, a, b )
         if decoded_message:
             print(decoded_message)
+
+
+print( code.root_2_binary_search() )
+print( code.calc_square_root( 2, 10 ** -5 ) )
+print( code.calc_nth_root( 2, 2, 10 ** -5 ) )

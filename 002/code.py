@@ -14,7 +14,6 @@ def encode_string(s, a, b):
         ret_arr.append( letter_dict[c] * a + b )
     return ret_arr
 
-
 def decode_numbers(arr, a, b):
     ret_s =  ''
     for elt in arr:
@@ -24,3 +23,38 @@ def decode_numbers(arr, a, b):
         else:
             ret_s += number_dict[d]
     return ret_s
+
+
+def root_2_binary_search():
+    lower, upper = 1, 2
+    midpoint = lambda a, b: (a+b) / 2
+    while upper - lower > 10 ** -5:
+        if midpoint( lower, upper ) ** 2 > 2:
+            upper = midpoint(lower, upper) 
+        else:
+            lower = midpoint(lower, upper) 
+    return midpoint(lower, upper)
+
+def calc_square_root( x, precision ):
+    lower, upper = 0, x 
+    midpoint = lambda a, b: (a+b) / 2
+    while upper - lower > precision:
+        if midpoint( lower, upper ) ** 2 > x:
+            upper = midpoint(lower, upper) 
+        else:
+            lower = midpoint(lower, upper) 
+    return midpoint(lower, upper)
+
+
+def calc_nth_root( x, n, precision ):
+    lower, upper = 0, x 
+    midpoint = lambda a, b: (a+b) / 2
+    while upper - lower > precision:
+        if midpoint( lower, upper ) ** n > x:
+            upper = midpoint(lower, upper) 
+        else:
+            lower = midpoint(lower, upper) 
+    return midpoint(lower, upper)
+
+
+    
