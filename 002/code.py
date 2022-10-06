@@ -9,7 +9,7 @@ from const import letter_dict, number_dict
 
 from functools import reduce
 from operator import lt
-
+import math
 
 def encode_string(s, a, b):
     ret_arr = []
@@ -48,7 +48,6 @@ def calc_square_root( x, precision ):
             lower = midpoint(lower, upper) 
     return midpoint(lower, upper)
 
-
 def calc_nth_root( x, n, precision ):
     lower, upper = 0, x 
     midpoint = lambda a, b: (a+b) / 2
@@ -58,6 +57,16 @@ def calc_nth_root( x, n, precision ):
         else:
             lower = midpoint(lower, upper) 
     return midpoint(lower, upper)
+
+def calc_nth_root_newtons_method( k, n, precision ):
+    f = lambda x, k, n: x ** n - k
+    derivatve = lambda x, k, n: n * (x ** (n-1))
+    approximations = [0, k/2]
+    while abs( approximations[-1] -approximations[-2] ) > precision:
+        approximations.append( approximations[-1] - 
+            (f(approximations[-1], k, n) / derivatve(approximations[-1], k, n) )   )
+
+    return approximations[-1]
 
 
 def calc_minimum(arr):
@@ -113,3 +122,21 @@ def card_sort(arr):
             elt_index += 1
         sorted = sorted[ :elt_index ] + [ elt ] + sorted[ elt_index : ]
     return sorted
+
+def merge(a,b):
+    a_index, b_index, ret_arr = 0, 0, []
+    while a_index < len(a) and b_index < len(b):
+        if a[a_index] < b[b_index]:
+            ret_arr.append( a[a_index] )
+            a_index += 1
+        else:
+            ret_arr.append( b[b_index] )
+            b_index += 1
+
+    if a_index == len(a):
+        ret_arr += b[ b_index: ]
+
+    if b_index == len(b):
+        ret_arr += a[ a_index: ]
+
+    return ret_arr

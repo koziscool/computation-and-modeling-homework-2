@@ -17,6 +17,7 @@ test_values = [
     ( code.tally_sort, [ 1, 2, 2, 2, 2, 4, 5, 5 ],  ( [4, 2, 2, 5, 2, 5, 1, 2], ) ) ,
     ( code.tally_sort, [ 1, 2, 4, 5 ],  ( [4, 5, 1, 2], ) ) ,
     ( code.card_sort, [ 1, 2, 4, 5 ],  ( [4, 5, 1, 2], ) ) ,
+    ( code.merge, [1,2,3,4,5,6,7,8], ( [ 1, 2, 5, 6 ],  [ 3, 4, 7, 8] ) ) ,
 ]
 
 print()
@@ -39,6 +40,7 @@ for a in range(1, 100):
 print( code.root_2_binary_search() )
 print( code.calc_square_root( 2, 10 ** -5 ) )
 print( code.calc_nth_root( 2, 2, 10 ** -5 ) )
+print( code.calc_nth_root_newtons_method( 2, 2, 10 ** -5 ) )
 
 
 
